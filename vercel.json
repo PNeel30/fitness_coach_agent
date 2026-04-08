@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "buildCommand": "npm run build:backend && npm run build:frontend",
+  "outputDirectory": "frontend/dist",
+  "functions": {
+    "api/**": {
+      "runtime": "@vercel/node@3"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.ts"
+    },
+    {
+      "src": "/(.*)",
+      "status": 200,
+      "dest": "/index.html"
+    }
+  ]
+}
